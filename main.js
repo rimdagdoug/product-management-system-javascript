@@ -87,6 +87,15 @@ function showData(){
         
     }
     document.getElementById('tbody').innerHTML = table;
+    let btnDelete = document.getElementById('deleteAll');
+    if(dataPro.length>0){
+        btnDelete.innerHTML = `
+        <button onclick="deleteAll()">delete All</button>
+        `
+    }else{
+        btnDelete.innerHTML = '';
+
+    }
 }
 
 showData();
@@ -97,5 +106,12 @@ function deleteData(i){
     //JSON.stringify(dataPro) convertit le tableau dataPro en une chaîne JSON, car localStorage ne peut stocker que des chaînes de caractères.
     localStorage.product = JSON.stringify(dataPro);
     showData();
+}
+//delteAll
+function deleteAll(){
+    localStorage.clear();
+    dataPro.splice(0);
+    showData();
+
 }
 
