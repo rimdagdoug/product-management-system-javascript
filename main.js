@@ -21,3 +21,45 @@ function getTotal(){
    }
 
 }
+
+//create product
+
+let dataPro;
+if(localStorage.product != null){
+    dataPro = JSON.parse(localStorage.product)
+}else{
+    dataPro = [];
+}
+
+
+
+submit.onclick = function(){
+    let newPro = {
+        title:title.value,
+        price:price.value,
+        taxes:taxes.value,
+        ads:ads.value,
+        discount:discount.value,
+        total:total.innerHTML,
+        count:count.value,
+        category:category.value,
+    }
+    dataPro.push(newPro);
+      //save localstorage
+    localStorage.setItem('product', JSON.stringify(dataPro));
+    console.log(dataPro);
+    clearData();
+  
+}
+//clear inputs
+function clearData(){
+    title.value = "";
+    price.value = "";
+    taxes.value = "";
+    ads.value = "";
+    discount.value = "";
+    total.innerHTML = "";
+    count.value = "";
+    category.value = "";
+
+}
