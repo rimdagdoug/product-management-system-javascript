@@ -80,7 +80,7 @@ function showData(){
         <td>${dataPro[i].total}</td>
         <td>${dataPro[i].category}</td>
         <td><button id="update">update</button></td>
-        <td><button id="delete">delete</button></td>
+        <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
 
     </tr>
         `         
@@ -88,4 +88,14 @@ function showData(){
     }
     document.getElementById('tbody').innerHTML = table;
 }
+
 showData();
+//delete data
+function deleteData(i){
+    dataPro.splice(i,1);
+    //localStorage est un objet qui permet de stocker des données dans le navigateur web.
+    //JSON.stringify(dataPro) convertit le tableau dataPro en une chaîne JSON, car localStorage ne peut stocker que des chaînes de caractères.
+    localStorage.product = JSON.stringify(dataPro);
+    showData();
+}
+
